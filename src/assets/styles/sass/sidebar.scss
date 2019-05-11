@@ -1,0 +1,83 @@
+.container{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  justify-content:flex-start;
+}
+.side-bar{
+  width:20vw;
+  height:100vh;
+  display:flex;
+  flex-direction: column;
+  justify-content:space-between;
+  .title{
+    height:10vh;
+    text-align: center;
+    p{
+      padding-right:20px;
+      font-size:20px;
+      font-weight:bold;
+      color:#747B7F;
+      padding-bottom: 10px;
+      .shekel{
+        position:absolute;
+        left:50px;
+        top:25px;
+        font-size: 26px;
+        color:#FF5E5B;
+      }
+    }
+  }
+  .profile{
+    display:flex;
+    flex-direction:row;
+
+    .img {
+      margin-left: 30px;
+      margin-top: 40px;
+      margin-bottom: 35px;
+    }
+    .par{
+      margin-left:10px;
+      margin-top:50px;
+      display:flex;
+      flex-direction:column;
+      height:10vh;
+     .name{
+       font-size:12px;
+       font-weight: bold;
+     }
+      .bio{
+        font-size:12px;
+        color:#B9BDBF;
+      }
+    }
+
+  }
+  .dashboard{
+    height:75vh;
+    ul{
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+    }
+    .links{
+      font-size: 12px;
+      height:5vh;
+      width:85%;
+      display:flex;
+      flex-direction:row;
+      text-decoration:none;
+      margin-left:15%;
+      color:#747B7F;
+      .font-awesome{
+         padding-top:3px;
+        padding-right:12px;
+      }
+    }
+  }
+}
+.active{
+  color:#FF8684;
+}
+
