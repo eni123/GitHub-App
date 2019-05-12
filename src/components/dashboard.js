@@ -11,6 +11,7 @@ class SideBar extends React.Component{
             <div className="side-bar">
                 <div className='title'>
                     <p>
+                        <FontAwesomeIcon className='shekel' icon={faShekelSign}/>
                         Git Shelf
                     </p>
                 </div>
@@ -18,6 +19,7 @@ class SideBar extends React.Component{
                     <div className="img">
                         <img src={this.props.user.avatar_url} alt={''}/>
                     </div>
+                    <div className="online-circle"> </div>
                     <div className="par">
                         <div className="name"> {this.props.user.name}</div>
                         <div className="bio"> {this.props.user.type}</div>

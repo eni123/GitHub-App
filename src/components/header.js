@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import {connect} from 'react-redux';
 import {logout} from '../actions/logoutAction'
-
 class Header extends React.Component{
     onClick=(e)=>{
         e.preventDefault();
         this.props.logout();
+        console.log(this.props);
     }
     render(){
         return(
@@ -18,7 +18,7 @@ class Header extends React.Component{
                     <input type='text' placeholder="Search"/>
                 </div>
                 <div className="head-link" >
-                    <Link className="link" to="/login" onClick={this.onClick}>Logout</Link>
+                    <Link className="link"  onClick={this.onClick}>Logout</Link>
                 </div>
             </div>
         )

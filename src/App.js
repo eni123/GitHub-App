@@ -9,8 +9,6 @@ import Profile from './pages/profile';
 import Header from './components/header';
 import Footer from './components/footer';
 import Dashboard from './pages/dashboard';
-import LoginForm from './components/loginForm';
-
 const ROUTES = [
     {
         route: '/',
