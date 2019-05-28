@@ -10,7 +10,7 @@ class ProfileComponent extends React.Component {
                     {this.props.user.login}<br/>
                     {this.props.user.id}<br/>
                     {this.props.user.followers}<br/>
-                    <img src={this.props.user.avatar_url}/>
+                    <img src={this.props.user.avatar_url} alt=''/>
                 </div>
             </div>
         )
@@ -18,7 +18,7 @@ class ProfileComponent extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-        user: state.users.user
+        user: state.user.info
     }
 }
 export default connect(mapStateToProps,{showUser})(ProfileComponent)

@@ -12,13 +12,13 @@
     align-items: center;
     .details{
       width:50%;
-      height:100%;
+      height:100px;
       display:flex;
       flex-direction:column;
       justify-content: space-around;
       .location{
         width:100%;
-        height:30%;
+        height:30px;
         display:flex;
         align-items: flex-start;
         margin-top: 5px;
@@ -33,7 +33,7 @@
       }
       .welcome{
         width:100%;
-        height:40%;
+        height:40px;
         display:flex;
         align-items:center;
         justify-content:flex-start;
@@ -50,7 +50,7 @@
       }
       .git-manager{
         width:100%;
-        height:20%;
+        height:20px;
         display:flex;
         align-items:flex-end;
         justify-content:flex-start;
@@ -62,16 +62,16 @@
     }
     .side-followers{
       width:40%;
-      height:90%;
+      height:90px;
     }
   }
   .dashboard-footer{
     width:100%;
-    height:calc(100% - 100px);
+    height:900px;
     display:flex;
     justify-content: space-between;
     .general-info{
-      height:100%;
+      height:400px;
       width:50%;
       display:flex;
       flex-direction:column;
@@ -427,9 +427,9 @@
          }
         }
       .all-org{
-        width:90%;
+        width:95%;
         height:70%;
-       // background-color: #6766A9;
+        //background-color: #6766A9;
         display:flex;
         margin-top:5px;
         .org{
@@ -440,6 +440,7 @@
           flex-direction:column;
           justify-content: space-around;
           align-items: center;
+          margin-left: 10px;
         .org-icon{
           width:60%;
           height:60%;
@@ -469,15 +470,35 @@
      }
     }
     .issues{
-      height:93%;
-      width:40%;
+      height:370px;
+      width:400px;
+      display:flex;
+      flex-direction:column;
       align-items: center;
-      justify-content: center;
-      .center-issues{
-        width:95%;
-        height:100%;
-        background-color: #FFFFFF;
+      justify-content: space-around;
+      background-color:white ;
+      margin-right:30px;
+      border-radius:8px;
+      .issues-title{
+        width:370px;
+        height:30px;
+        //background-color: #6766A9;
+        display:flex;
+        align-items:center;
+        p{
+          color:#495359;
+          font-size:22px;
+        }
+      }
+      .activities{
+        width:370px;
+        height:300px;
+        //background-color:pink;
         border-radius: 10px;
+        display:flex;
+        flex-direction:column;
+        justify-content: space-between;
+        .activity{}
       }
     }
   }

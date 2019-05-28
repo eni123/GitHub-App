@@ -9,14 +9,16 @@ import Profile from './pages/profile';
 import Header from './components/header';
 import Footer from './components/footer';
 import Dashboard from './pages/dashboard';
+import {connect} from 'react-redux';
+
 const ROUTES = [
     {
         route: '/',
-        component: Dashboard
+        component: Login
     },
     {
-        route: '/login',
-        component: Login
+        route: '/dashboard',
+        component: Dashboard
     },
     {
         route: '/repositories',
@@ -30,37 +32,36 @@ const ROUTES = [
         route: '/settings',
         component: Settings
     }
-    ]
+];
 
 class App extends React.Component {
-    state = {route: '/'}
-
+    state = {route: '/'};
     render() {
         return (
             <BrowserRouter>
                 <div className="container">
                     {ROUTES.map(item =>
-                        <Route exact path={item.route} render={(props) => {
+                        <Route exact path={item.route} key={item.route} render={(props) => {
                             const Component = item.component;
-                            if (item.route !== '/login')
-                                return <div className="container">
-                                    <div className="side_bar">
-                                        {item.route !== '/login' && <SideBar/>}
+                             if (item.route !== '/')
+                            return <div className="container">
+                                <div className="side_bar">
+                                    {item.route !== '/' && <SideBar/>}
+                                </div>
+                                <div className="main-bar">
+                                    <div className="head">
+                                        {item.route !== '/' && <Header/>}
                                     </div>
-                                    <div className="main-bar">
-                                        <div className="head">
-                                            {item.route !== '/login' && <Header/>}
-                                        </div>
-                                        <div className="middle">
-                                            <Component {...props}/>
-                                        </div>
-                                        <div className="foot">
-                                            {item.route !== '/login' && <Footer/>}
-                                        </div>
+                                    <div className="middle">
+                                        <Component {...props}/>
+                                    </div>
+                                    <div className="foot">
+                                        {item.route !== '/' && <Footer/>}
                                     </div>
                                 </div>
+                            </div>
                             else {
-                                return <Login {...props}/>
+                                return <Login {...props} />
                             }
                         }}/>
                     )}
@@ -69,4 +70,10 @@ class App extends React.Component {
         );
     }
 }
-export default App;
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user.info
+    }
+};
+export default connect(mapStateToProps)(App);

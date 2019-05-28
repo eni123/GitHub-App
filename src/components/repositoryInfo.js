@@ -1,15 +1,38 @@
-import {connect} from 'react-redux';
-import {showRep} from "../actions/repoAction";
 import React from 'react';
-class RepositoryInfo extends React.Component{
-    render(){
-        return <div>{this.props.repos.bio}</div>
-     }
+import {connect} from 'react-redux';
 
-}
-const mapStateToProps = (state) => {
+class RepositoryInfo extends React.Component {
+    render() {
+        if( typeof this.props.repos !== 'undefined' && this.props.repos.length > 0 ) {
+            return this.props.repos.map(repo =>
+                <div key= {repo.id} className="repos">
+                    <div className="repo">
+                        <div className="repo-name">
+                            <p>{repo.name}</p>
+                        </div>
+                        <div className="repo-language">
+                            <div className="language-circle">
+
+                            </div>
+                            <p>{repo.language}</p>
+                        </div>
+                    </div>
+                </div>)
+        }
+        else{
+            return (
+                <div className="no-rep">
+                    <p>
+                        No Repositories Yet...
+                    </p>
+                </div>
+            )
+        }
+    }
+    }
+    const mapStateToProps = (state) => {
     return {
-        repos: state.repos.repos
+        repos: state.user.repos
     }
 }
-export default connect(mapStateToProps,{showRep})(RepositoryInfo)
+export default connect(mapStateToProps)(RepositoryInfo)

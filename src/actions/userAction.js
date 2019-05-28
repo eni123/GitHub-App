@@ -1,30 +1,49 @@
 import {SHOW_USER} from './types';
 
-//export function showUser(username) {
-//     let eni=fetch(`https://api.github.com/users/${username}`)
-//         .then(response => response.json())
-//         .then(data => {
-//             return data
-//         })
-//     return {
-//         type: SHOW_USER,
-//         payload:eni
-//     }
-//
-// }
-
 export function showUser(username) {
+
     return function (dispatch) {
-         fetch(`https://api.github.com/users/${username}`)
-             .then(response => response.json())
-            .then(data => {
+        try {
+            fetch(`https://api.github.com/users/${username}`)
+                .then(response => response.json())
+                .then(async (data) => {
+                    const res = await Promise.all([
+                        fetch(`https://api.github.com/users/${username}/received_events`),
+                        fetch(`https://api.github.com/users/${username}/repos`),
+                        fetch(`https://api.github.com/users/${username}/orgs`)
+                    ]);
+                    const responseJson = await Promise.all([
+                        res[0].json(),
+                        res[1].json(),
+                        res[2].json()
+                    ]);
+
                     return dispatch(
                         {
                             type: SHOW_USER,
-                             payload: data
-                       }
+                            user: data,
+                            events: responseJson[0],
+                            repos: responseJson[1],
+                            orgs:responseJson[2]
+                        }
                     )
-               }
-           )
+                    // fetch(`https://api.github.com/users/${username}/received_events`)
+                    //                 .then(responseEvents=> responseEvents.json())
+                    //                 .then(events => {
+                    //                     console.log(events)
+                    //                     return dispatch(
+                    //                         {
+                    //                             type: SHOW_USER,
+                    //                             user: data,
+                    //                             events
+                    //                         }
+                    //             )})
+
+
+                    })
+        } catch (error) {
+
+        }
+
      }
  }

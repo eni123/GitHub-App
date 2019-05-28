@@ -1,22 +1,33 @@
-import {SHOW_USER} from '../actions/types';
-import {LOG_OUT} from '../actions/types';
-const initState={
-    user:{}
-}
-function userReducer(state=initState,action){
-    switch(action.type){
+import {SHOW_USER, LOG_OUT,} from '../actions/types';
+
+const initState = {
+    info: {},
+    repos: [],
+    events: [],
+    orgs:[]
+};
+
+function userReducer(state = initState, action) {
+    switch (action.type) {
         case SHOW_USER:
             return {
                 ...state,
-                user: action.payload
-            }
+                info: action.user,
+                events: action.events,
+                repos: action.repos,
+                orgs:action.orgs
+            };
         case LOG_OUT:
-            return{
+            return {
                 ...state,
-                user: {}
-            }
+                info: {},
+                repos: [],
+                events: [],
+                orgs:[]
+            };
         default:
             return state
     }
 }
+
 export default userReducer
